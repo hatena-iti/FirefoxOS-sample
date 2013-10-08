@@ -7,7 +7,7 @@ $(function() {
 		
 		title = $("h3",this).text();
 		
-		url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&q=" + encodeURIComponent(url);
+		url = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&q=" + encodeURIComponent(url);
 		
 		//クロスサイトリクエストになるので、エラーをさけるため、対策のなされたサイトを経由
 		url = ajax_proxy + "?url=" + encodeURIComponent(url);
@@ -162,9 +162,8 @@ $(function() {
 			url: url,
 			dataType: "html",
 		}).done(function(data) {
-
 			data = preprocessData(data);
-			
+
 			var iframe = $('<iframe style="display:none">');
 
 			iframe.load(function() {
@@ -176,8 +175,9 @@ $(function() {
 						
 				$("#itemdetail_content").children().remove();
 				
-				var txt = '<!DOCTYPE html><html><meta charset="utf-8"><body>';
-				txt +=  obj['content'].innerHTML + "</body></html>";
+				var txt = '';
+				txt +=  obj['content'].innerHTML;
+				
 				$("#itemdetail_content").append(txt);
 
 				$.mobile.changePage('#itemdetail', {transition:"slide"})
@@ -194,6 +194,16 @@ $(function() {
 	
 	var preprocessData = function(data) {
 		try {
+			var ind = data.indexOf("<?xml");
+			if (ind >= 0) {
+				for (var i = ind+1;i < data.length; i++) {
+					if (data.charAt(i) == ">") {
+						data = data.substring(i+1);
+						break;
+					}
+				}
+			}
+			
 			var tempDiv =$('<div>');
 			tempDiv[0].innerHTML = data;
 			var scr = tempDiv.find('script');
@@ -218,7 +228,7 @@ $(function() {
 			scr.each(function(ind) {
 				$(this).remove();
 			});
-			
+						
 			return tempDiv.html();
 		}
 		catch(ex) {

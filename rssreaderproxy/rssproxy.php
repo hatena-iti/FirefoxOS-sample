@@ -3,10 +3,12 @@
 require_once "common.php";
 
 header("Access-Control-Allow-Origin: *");
+header("Content-type: text/html;charset=utf-8");
 
 $url = $_GET["url"];
 
-if(defined('HTTP_PROXY') ) {
+$data = "";
+if(defined('HTTP_PROXY') && HTTP_PROXY) {
 	$proxy = array(
 		"http" => array(
 			"proxy" => str_replace("http:", "tcp:", HTTP_PROXY), //http only now
@@ -14,9 +16,11 @@ if(defined('HTTP_PROXY') ) {
 		)
 	);
 	
-	echo file_get_contents($url, false, stream_context_create($proxy));
+	$data = file_get_contents($url, false, stream_context_create($proxy));
 }
 else {
-	echo file_get_contents($url);
+	$data = file_get_contents($url);
 }
 
+mb_language('Japanese');
+echo mb_convert_encoding($data, "UTF-8", "auto");

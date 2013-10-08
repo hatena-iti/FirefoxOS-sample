@@ -1,0 +1,18 @@
+
+
+.ui-li-desc {white-space:normal;}
+
+.ui-li-thumb {
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:10;
+	margin:auto;
+	width:65px;
+	height:65px;
+}
+
+.ui-page .ui-content .ui-listview span {
+    line-height    : 80px;
+    vertical-align : middle;
+}

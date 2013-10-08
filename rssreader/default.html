@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>jQuery Mobile Test</title>
+
+<script src="vendor/jQuery/jquery-2.0.3.min.js"></script>
+
+<script>
+var redirectToHome = false;
+
+$(document).on('mobileinit',function() {
+	console.log("hash:" + location.hash + "," + location.pathname);
+	
+});
+
+</script>
+
+<!--  jQeury Mobile -->
+<link rel="stylesheet" href="vendor/jQueryMobile/jquery.mobile-1.3.1.min.css" />
+<script src="vendor/jQueryMobile/jquery.mobile-1.3.1.min.js" ></script>
+
+ 
+ <script src="vendor/readability/readability_mod.js"></script>
+
+</head>
+
+<link rel="stylesheet" href="styles/RssReader.css" />
+<script src="js/RssReader.js"></script>
+<body>
+
+<div data-role="page" id="menu" data-title="メニュー">
+
+<div data-role="header">
+	<h1>メニュー</h1>
+</div>
+
+<div data-role="content">
+
+<ul data-role="listview">
+	<!-- Top  -->
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=h&num=50">
+			<img  src="resources/images/top.png"  >
+			<span class="itemTitle">トップニュース</span>
+		</a>
+	</li>
+	
+	<!-- Pickup -->
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=ir&num=50">
+			<img src="resources/images/focus.png">
+			<span class=".itemTitle">ピックアップ</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=y&num=50">
+			<img src="resources/images/home.png">
+			<span class=".itemTitle">社会</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=w&num=50">
+			<img src="resources/images/world.png">
+			<span class=".itemTitle">国際</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=b&num=50">
+			<img src="resources/images/business.png">
+			<span class=".itemTitle">ビジネス</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=p&num=50">
+			<img src="resources/images/politics.png">
+			<span class=".itemTitle">政治</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=e&num=50">
+			<img src="resources/images/movie.png">
+			<span class=".itemTitle">エンタメ</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=s&num=50">
+			<img src="resources/images/sports.png">
+			<span class=".itemTitle">スポーツ</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&topic=t&num=50">
+			<img src="resources/images/technology.png">
+			<span class=".itemTitle">テクノロジー</span>
+		</a>
+	</li>
+
+	<li>
+		<a class="rsslink" url="http://news.google.com/news?hl=ja&ned=us&ie=UTF-8&oe=UTF-8&output=rss&q=Firefox+OS&num=50">
+			<img src="resources/images/search.png">
+			<span class=".itemTitle">Firefox OS</span>
+		</a>
+	</li>
+</ul>
+
+
+</div> <!--  content -->
+
+</div> <!--  menu -->
+
+<!-- dialog -->
+<div data-role="dialog" id="dialog" >
+	<div data-role="header" id="dlg_header">
+		<h3>メッセージ</h3>
+	</div>
+	<div data-role="content" id="dlg_content">
+	</div>
+</div>
+
+<!-- itemList -->
+
+<div data-role="page" id="itemlist"  data-add-back-btn="true">
+	<div data-role="header">
+	<!--  
+		<a href="#menu" data-icon="home" data-iconpos="notext"></a>
+		-->
+		<h1 id="itemlist_title"></h1>
+	</div>
+	
+	<div data-role="content" id="itemlist_content">
+		<ul data-role="listview" id="itemlist_listview"></ul>
+	</div>
+</div> 
+
+<!-- end of itemlist -->
+
+<!-- detail page -->
+<div data-role="page" id="itemdetail"  data-add-back-btn="true">
+	<div data-role="header">
+		<h1 id="itemdetail_title"></h1>
+	</div>
+	
+	<div data-role="content" id="itemdetail_content">
+	</div>
+</div> 
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+	"version": "1.0",
+	"name":"RssReader",
+	"description": "Firefox OS Test",
+	"launch_path": "/default.html",
+	"icons": {
+		"128": "/resources/images/icon-128.png"
+	},
+	"developer": {
+		"name": "ITI",
+		"url": "www.iti.co.jp"
+	},
+	"default_locale": "ja"
+}
